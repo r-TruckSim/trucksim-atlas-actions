@@ -1,0 +1,22 @@
+{
+  "comment": "Exported from https://atlas.bot",
+  "formatVersion": 2,
+  "exportedAt": "2025-09-08T12:19:16.859Z",
+  "actions": [
+    {
+      "trigger": {
+        "__typename": "GuildActionTriggerVoiceChannelLeave",
+        "contextChannelId": null,
+        "type": "VoiceChannelLeave",
+        "voiceChannelId": null
+      },
+      "disabled": false,
+      "name": "join vc",
+      "content": "//// DON'T TOUCH ANYTHING IN THIS ACTION UNLESS YOU KNOW WHAT YOU'RE DOING\r\n//// Base code developed by canehdian\r\n\r\n{=existingChannels;{or;{store.get;existingChannels};{[]}}}\r\n{if;{length;{$existingChannels}};==;0;{return}}\r\n{=channelInfo;{store.get;{channel.id}_voice}}\r\n{if;{$channelInfo};==;;{return}}\r\n{=channelInfo.users;{filter;{$channelInfo.users};{user.id}}}\r\n{if;{length;{$channelInfo.users}};==;0;\r\n    {store.delete;{channel.id}_voice}\r\n    {=existingChannels;{filter;{$existingChannels};{channel.id}}}\r\n    {store.set;existingChannels;{$existingChannels}}\r\n    {channel.delete;{channel.id}}\r\n    ;\r\n    {store.set;{channel.id}_voice;{$channelInfo}}\r\n}",
+      "cooldownSeconds": 0,
+      "cooldownType": "User",
+      "restriction": null,
+      "flags": "128"
+    }
+  ]
+}

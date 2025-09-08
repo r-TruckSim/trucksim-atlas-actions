@@ -1,0 +1,102 @@
+{
+  "comment": "Exported from https://atlas.bot",
+  "formatVersion": 2,
+  "exportedAt": "2025-09-08T04:49:05.545Z",
+  "actions": [
+    {
+      "trigger": {
+        "__typename": "GuildActionTriggerSlashCommand",
+        "description": "Search/Find members",
+        "name": "lfg",
+        "parameters": [
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [
+              "GUILD_VOICE"
+            ],
+            "choices": [],
+            "description": "Enter voice channel you want to use",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "channel",
+            "required": true,
+            "type": "Channel"
+          },
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [],
+            "choices": [
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": "1-4",
+                "value": "1-4"
+              },
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": "3-8",
+                "value": "3-8"
+              },
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": "8+",
+                "value": "8+"
+              }
+            ],
+            "description": "How many players are you looking for",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "players",
+            "required": true,
+            "type": "String"
+          },
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [],
+            "choices": [
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": "ATS",
+                "value": "ATS"
+              },
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": " ETS2",
+                "value": " ETS2"
+              }
+            ],
+            "description": "Enter game you would like to play",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "game",
+            "required": true,
+            "type": "String"
+          }
+        ],
+        "type": "SlashCommand"
+      },
+      "disabled": false,
+      "name": "Convoy",
+      "content": "{responder.embed;{{\r\n  \"title\": \"Looking for Members\",\r\n  \"url\": \"https://discord.com/channels/307404784065839104/1030682242730704907\",\r\n  \"color\": 460551,\r\n\"description\": \"{user.mention} ({user.username}) is looking for a group.\",\r\n  \"thumbnail\": {\r\n    \"url\": \"https://media.discordapp.net/icons/307404784065839104/a_dfef56474a89cd3294b8658c59f06951.png\"\r\n  },\r\n  \"fields\": [\r\n    {\r\n      \"name\": \"Join channel\",\r\n      \"value\": \"<#{option;channel}>\"\r\n    },\r\n    {\r\n      \"name\": \"Game to play\",\r\n      \"value\": \"{option;game}\"\r\n    },\r\n    {\r\n      \"name\": \"Players needed\",\r\n      \"value\": \"{option;players}\"\r\n    }\r\n  ]\r\n}}}",
+      "cooldownSeconds": 7200,
+      "cooldownType": "User",
+      "restriction": {
+        "__typename": "Restriction",
+        "channelMode": "Whitelist",
+        "channelValue": [
+          "1030682242730704907",
+          "343720617545039874"
+        ],
+        "permissions": "0",
+        "roleMode": "Blacklist",
+        "roleValue": []
+      },
+      "flags": "0"
+    }
+  ]
+}

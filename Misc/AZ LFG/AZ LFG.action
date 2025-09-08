@@ -1,7 +1,7 @@
 {
   "comment": "Exported from https://atlas.bot",
   "formatVersion": 2,
-  "exportedAt": "2025-09-08T04:49:05.545Z",
+  "exportedAt": "2025-09-08T04:57:43.285Z",
   "actions": [
     {
       "trigger": {
@@ -82,7 +82,7 @@
       },
       "disabled": false,
       "name": "Convoy",
-      "content": "{responder.embed;{{\r\n  \"title\": \"Looking for Members\",\r\n  \"url\": \"https://discord.com/channels/307404784065839104/1030682242730704907\",\r\n  \"color\": 460551,\r\n\"description\": \"{user.mention} ({user.username}) is looking for a group.\",\r\n  \"thumbnail\": {\r\n    \"url\": \"https://media.discordapp.net/icons/307404784065839104/a_dfef56474a89cd3294b8658c59f06951.png\"\r\n  },\r\n  \"fields\": [\r\n    {\r\n      \"name\": \"Join channel\",\r\n      \"value\": \"<#{option;channel}>\"\r\n    },\r\n    {\r\n      \"name\": \"Game to play\",\r\n      \"value\": \"{option;game}\"\r\n    },\r\n    {\r\n      \"name\": \"Players needed\",\r\n      \"value\": \"{option;players}\"\r\n    }\r\n  ]\r\n}}}",
+      "content": "// LFG Action created by azgoodaz\r\n\r\n{responder.embed;{{\r\n  \"title\": \"Looking for Members\",\r\n  \"url\": \"https://discord.com/channels/307404784065839104/1030682242730704907\",\r\n  \"color\": 460551,\r\n\"description\": \"{user.mention} ({user.username}) is looking for a group.\",\r\n  \"thumbnail\": {\r\n    \"url\": \"https://media.discordapp.net/icons/307404784065839104/a_dfef56474a89cd3294b8658c59f06951.png\"\r\n  },\r\n  \"fields\": [\r\n    {\r\n      \"name\": \"Join channel\",\r\n      \"value\": \"<#{option;channel}>\"\r\n    },\r\n    {\r\n      \"name\": \"Game to play\",\r\n      \"value\": \"{option;game}\"\r\n    },\r\n    {\r\n      \"name\": \"Players needed\",\r\n      \"value\": \"{option;players}\"\r\n    }\r\n  ]\r\n}}}",
       "cooldownSeconds": 7200,
       "cooldownType": "User",
       "restriction": {

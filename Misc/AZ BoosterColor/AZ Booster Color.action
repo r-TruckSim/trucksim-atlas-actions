@@ -1,7 +1,7 @@
 {
   "comment": "Exported from https://atlas.bot",
   "formatVersion": 2,
-  "exportedAt": "2025-09-08T04:41:24.545Z",
+  "exportedAt": "2025-09-08T04:59:04.816Z",
   "actions": [
     {
       "trigger": {
@@ -12,7 +12,7 @@
       },
       "disabled": false,
       "name": "Booster Color",
-      "content": "//// Removes custom booster colors if user stops boosting server\r\n{=logID;343720617545039874}\r\n{=boosterRole;585528913640554527}\r\n\r\n{=color1Role;1381954345893101619}\r\n{=color2Role;1381954463056789525}\r\n\r\n{responder.channel;{$logID}}\r\n{responder.text;**[Booster Color]** script has ran. I removed custom role colors from anyone who left Nitro Booster (if anyone did).}\r\n{responder.send}\r\n\r\n{=roles;{user.roles}}\r\n{if;{$roles};includes;{$boosterRole}; //// Main Booster role\r\n  {if;{user.roles}:!includes;{$boosterRole};{user.removerole;{$color1Role}}} //// Color 1\r\n  {if;{user.roles}:!includes;{$boosterRole};{user.removerole;{$color2Role}}} //// Color 2\r\n}",
+      "content": "//// Script runs once a month, it removes custom booster colors if user stops boosting server created by azgoodaz\r\n\r\n{=logID;343720617545039874}\r\n{=boosterRole;585528913640554527}\r\n\r\n{=color1Role;1381954345893101619}\r\n{=color2Role;1381954463056789525}\r\n\r\n{responder.channel;{$logID}}\r\n{responder.text;**[Booster Color]** script has ran. I removed custom role colors from anyone who left Nitro Booster (if anyone did).}\r\n{responder.send}\r\n\r\n{=roles;{user.roles}}\r\n{if;{$roles};includes;{$boosterRole}; //// Main Booster role\r\n  {if;{user.roles}:!includes;{$boosterRole};{user.removerole;{$color1Role}}} //// Color 1\r\n  {if;{user.roles}:!includes;{$boosterRole};{user.removerole;{$color2Role}}} //// Color 2\r\n}",
       "cooldownSeconds": 0,
       "cooldownType": "User",
       "restriction": null,

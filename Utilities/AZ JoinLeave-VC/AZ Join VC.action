@@ -1,22 +1,31 @@
 {
   "comment": "Exported from https://atlas.bot",
   "formatVersion": 2,
-  "exportedAt": "2025-09-08T12:19:16.859Z",
+  "exportedAt": "2025-09-08T12:29:50.262Z",
   "actions": [
     {
       "trigger": {
-        "__typename": "GuildActionTriggerVoiceChannelLeave",
+        "__typename": "GuildActionTriggerVoiceChannelJoin",
         "contextChannelId": null,
-        "type": "VoiceChannelLeave",
+        "type": "VoiceChannelJoin",
         "voiceChannelId": null
       },
       "disabled": false,
       "name": "join vc",
-      "content": "//// DON'T TOUCH ANYTHING IN THIS ACTION UNLESS YOU KNOW WHAT YOU'RE DOING\r\n//// Base code developed by canehdian\r\n\r\n{=existingChannels;{or;{store.get;existingChannels};{[]}}}\r\n{if;{length;{$existingChannels}};==;0;{return}}\r\n{=channelInfo;{store.get;{channel.id}_voice}}\r\n{if;{$channelInfo};==;;{return}}\r\n{=channelInfo.users;{filter;{$channelInfo.users};{user.id}}}\r\n{if;{length;{$channelInfo.users}};==;0;\r\n    {store.delete;{channel.id}_voice}\r\n    {=existingChannels;{filter;{$existingChannels};{channel.id}}}\r\n    {store.set;existingChannels;{$existingChannels}}\r\n    {channel.delete;{channel.id}}\r\n    ;\r\n    {store.set;{channel.id}_voice;{$channelInfo}}\r\n}",
+      "content": "//// DON'T TOUCH ANYTHING IN THIS ACTION UNLESS YOU KNOW WHAT YOU'RE DOING\r\n//// Base code developed by canehdian\r\n\r\n// replace the ID with the ID of the channel that users should join to create a personal VC\r\n{=JoinToCreateID;868633580350345216} \r\n// this is the name that the new voice chat will be created with\r\n{=DefaultChannelName;{user.username}'s VC}\r\n// this is the category ID that the new vc will be created under\r\n{=TemporaryChannelParentID;{channel.parentId}}\r\n\r\n//// DON\"T TOUCH ANYTHING BELOW THIS UNLESS YOU KNOW WHAT YOU'RE DOING\r\n\r\n{=existingChannels;{or;{store.get;existingChannels};{[]}}}\r\n{if;{channel.id};===;{$JoinToCreateID};\r\n    {=channel;{channel.create name=\"{$DefaultChannelName}\" type=\"GUILD_VOICE\" parent=\"{$TemporaryChannelParentID}\" return_id=\"true\"}}\r\n    {user.edit channel=\"{$channel}\"}\r\n    {push;{$existingChannels};{$channel}}\r\n    {store.set;existingChannels;{$existingChannels}}\r\n    {=channelInfo;{{\r\n        \"users\": [\"{user.id}\"],\r\n        \"owner\": \"{user.id}\",\r\n        \"createdAt\": \"{time}\"\r\n    }}}\r\n    {store.set;{$channel}_voice;{$channelInfo}}\r\n    {return}\r\n}\r\n// if the channel they joined is not included in the existing temporary voice channels\r\n// it ends the script\r\n{if;{$existingChannels};!includes;{channel.id};{return}}\r\n{=channelInfo;{store.get;{channel.id}_voice}}\r\n{if;{$channelInfo.users};includes;{user.id};{return}}\r\n{push;{$channelInfo.users};{user.id}}\r\n{store.set;{channel.id}_voice;{$channelInfo}}\r\n{{break}}",
       "cooldownSeconds": 0,
       "cooldownType": "User",
-      "restriction": null,
-      "flags": "128"
+      "restriction": {
+        "__typename": "Restriction",
+        "channelMode": "Blacklist",
+        "channelValue": [],
+        "permissions": "0",
+        "roleMode": "Whitelist",
+        "roleValue": [
+          "327965386224173066"
+        ]
+      },
+      "flags": "0"
     }
   ]
 }

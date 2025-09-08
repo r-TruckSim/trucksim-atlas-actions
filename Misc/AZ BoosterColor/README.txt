@@ -4,6 +4,7 @@ A Nitro Booster action which removes custom colors from users when users stop bo
 
 ## Usage
 
+0) Actions > Import Action
 1) Replace logID with your channel where you want output sent.
 2) Add the main booster role ID that Discord gives users automatically.
 3) Add in the ID's of your custom colors that boosters can optional select/use.

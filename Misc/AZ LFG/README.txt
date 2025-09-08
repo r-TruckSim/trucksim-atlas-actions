@@ -4,6 +4,7 @@ A LFG action which outputs an embed of the user voice channel, what game the use
 
 ## Usage
 
+0) Actions > Import Action
 1) Replace "url" Discord link with your #lfg, #mulitplayer or #looking-for-players channel link
 2) Replace "url" link with your own server icon image.
 3) In the 'game' string, click on 'Advanced' and adjust your game(s) your server plays.

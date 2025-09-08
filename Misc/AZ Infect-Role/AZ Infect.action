@@ -1,0 +1,50 @@
+{
+  "comment": "Exported from https://atlas.bot",
+  "formatVersion": 2,
+  "exportedAt": "2025-09-08T21:47:47.891Z",
+  "actions": [
+    {
+      "trigger": {
+        "__typename": "GuildActionTriggerSlashCommand",
+        "description": "Bite",
+        "name": "bite",
+        "parameters": [
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [],
+            "choices": [],
+            "description": "Enter your username",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "username",
+            "required": true,
+            "type": "User"
+          },
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [],
+            "choices": [],
+            "description": "Enter target name",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "target",
+            "required": true,
+            "type": "User"
+          }
+        ],
+        "type": "SlashCommand"
+      },
+      "disabled": false,
+      "name": "bite",
+      "content": "// Source: https://carl.gg/t/2140166 created by Citnas for Carl tag system.\r\n// Conversion to Trigger/Action for Atlas by azgoodaz\r\n\r\n// IDs\r\n{=InfectedRole;1414308556655562923} // Role given to injected if biten\r\n{=BiteChannel;413927920394960907} // Channel where infected an bite\r\n\r\n// Step 1 - Require: only works in the correct channel\r\n{if;{and;{user.roles;{option;username}};{channel.id};!={$BiteChannel};}}\r\n    {responder.ephemeral}\r\n    {responder.text;{user.mention}, please use this in the proper channel.}\r\n\r\n// Step 2 - Require: only zombies can bite (must have InfectedRole)\r\n{if;{{user.roles;{option;username}};;includes;{$InfectedRole}};}\r\n    {responder.ephemeral}\r\n    {responder.text;{user.mention}, only zombies can bite... Human's can't.}\r\n\r\n// Step 3 - Zombie can't bite themselves\r\n{if;{and;{user.roles;{option;username}};=={user.roles;{option;username}}}}\r\n    {responder.ephemeral}\r\n    {responder.text;{user.mention}, you can't bite yourself.}\r\n\r\n// Step 3 - Check if target already infected\r\n{if;{{user.roles;{option;target}};includes;{$InfectedRole};}\r\n    {responder.ephemeral}\r\n    {responder.text;{user.mention}, tried to bite {mention;{option;target}}, but they are already infected!}\r\n;\r\n    // Step 4 - Infect the target\r\n    {user.addRole};{$InfectedRole};{option;target}\r\n    {responder.text;{user.mention}, bit {mention;{option;target}}, the virus spreads! You spread to another zombie in 6 hours.}\r\n}",
+      "cooldownSeconds": 0,
+      "cooldownType": "User",
+      "restriction": null,
+      "flags": "0"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "comment": "Exported from https://atlas.bot",
+  "formatVersion": 2,
+  "exportedAt": "2025-09-08T20:27:27.038Z",
+  "actions": [
+    {
+      "trigger": {
+        "__typename": "GuildActionTriggerSlashCommand",
+        "description": "Level / Rank System",
+        "name": "rewards",
+        "parameters": [],
+        "type": "SlashCommand"
+      },
+      "disabled": false,
+      "name": "Rewards",
+      "content": "{responder.embed;{{\r\n  \"channel\": \"Embed Builder\",\r\n  \"color\": 460551,\r\n  \"description\": \"**Server Rank/Level System**\\n\\n* Level **0**: <@&327965386224173066> (0 XP)\\n* Level **1**: <@&327954623333924869> (105 XP) - Reactions/Images\\n* Level **13**: <@&385856022557884416> (3,539 XP)\\n* Level **18**: <@&385856144540827649> (7,704 XP)\\n* Level **20**: <@&516570702544109588> (10,080 XP)\\n\\nYou can check your level anytime in <#377421710829289473>.\"\r\n}}}\r\n{responder.ephemeral}",
+      "cooldownSeconds": 0,
+      "cooldownType": "User",
+      "restriction": null,
+      "flags": "0"
+    }
+  ]
+}

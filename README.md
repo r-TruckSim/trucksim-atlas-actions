@@ -1,2 +1,4 @@
 # Atlas Community Actions Repository
 Welcome to the **Atlas Community Actions Repository**, a public resource for users of the [Atlas](https://atlas.bot) Discord bot to share custom-made actions and snippets of code with others in the Atlas community. Although every attempt is made to scan all actions submitted to this repository for malicious content, we assume no responsibility for any damages incurred from importing content from this source into your server.
+
+These are a list of actions and functions and ultities that we use in the https://discord.gg/trucksim Discord server.

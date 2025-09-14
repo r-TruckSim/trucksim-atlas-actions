@@ -1,7 +1,7 @@
 {
   "comment": "Exported from https://atlas.bot",
   "formatVersion": 2,
-  "exportedAt": "2025-09-08T12:29:48.659Z",
+  "exportedAt": "2025-09-14T05:04:39.723Z",
   "actions": [
     {
       "trigger": {
@@ -16,7 +16,7 @@
       "cooldownSeconds": 0,
       "cooldownType": "User",
       "restriction": null,
-      "flags": "128"
+      "flags": "0"
     }
   ]
 }

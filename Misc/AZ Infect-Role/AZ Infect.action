@@ -1,32 +1,19 @@
 {
   "comment": "Exported from https://atlas.bot",
   "formatVersion": 2,
-  "exportedAt": "2025-09-08T21:47:47.891Z",
+  "exportedAt": "2025-09-15T16:11:38.755Z",
   "actions": [
     {
       "trigger": {
         "__typename": "GuildActionTriggerSlashCommand",
-        "description": "Bite",
+        "description": "Bite a user and infect them with the zombie virus.",
         "name": "bite",
         "parameters": [
           {
             "__typename": "GuildActionTriggerParameter",
             "channel_types": [],
             "choices": [],
-            "description": "Enter your username",
-            "max_length": null,
-            "max_value": null,
-            "min_length": null,
-            "min_value": null,
-            "name": "username",
-            "required": true,
-            "type": "User"
-          },
-          {
-            "__typename": "GuildActionTriggerParameter",
-            "channel_types": [],
-            "choices": [],
-            "description": "Enter target name",
+            "description": "The user you want to bite.",
             "max_length": null,
             "max_value": null,
             "min_length": null,
@@ -40,11 +27,20 @@
       },
       "disabled": false,
       "name": "bite",
-      "content": "// Source: https://carl.gg/t/2140166 created by Citnas for Carl tag system.\r\n// Conversion to Trigger/Action for Atlas by azgoodaz\r\n\r\n// IDs\r\n{=InfectedRole;1414308556655562923} // Role given to injected if biten\r\n{=BiteChannel;413927920394960907} // Channel where infected an bite\r\n\r\n// Step 1 - Require: only works in the correct channel\r\n{if;{and;{user.roles;{option;username}};{channel.id};!={$BiteChannel};}}\r\n    {responder.ephemeral}\r\n    {responder.text;{user.mention}, please use this in the proper channel.}\r\n\r\n// Step 2 - Require: only zombies can bite (must have InfectedRole)\r\n{if;{{user.roles;{option;username}};;includes;{$InfectedRole}};}\r\n    {responder.ephemeral}\r\n    {responder.text;{user.mention}, only zombies can bite... Human's can't.}\r\n\r\n// Step 3 - Zombie can't bite themselves\r\n{if;{and;{user.roles;{option;username}};=={user.roles;{option;username}}}}\r\n    {responder.ephemeral}\r\n    {responder.text;{user.mention}, you can't bite yourself.}\r\n\r\n// Step 3 - Check if target already infected\r\n{if;{{user.roles;{option;target}};includes;{$InfectedRole};}\r\n    {responder.ephemeral}\r\n    {responder.text;{user.mention}, tried to bite {mention;{option;target}}, but they are already infected!}\r\n;\r\n    // Step 4 - Infect the target\r\n    {user.addRole};{$InfectedRole};{option;target}\r\n    {responder.text;{user.mention}, bit {mention;{option;target}}, the virus spreads! You spread to another zombie in 6 hours.}\r\n}",
-      "cooldownSeconds": 0,
+      "content": "// Source: https://carl.gg/t/2140166 created by Citnas for Carl tag system.\r\n// Conversion to Trigger/Action for Atlas by azgoodaz & DracoClaw\r\n\r\n// IDs\r\n{=infectedRole;1392453939038781571}\r\n{=targetRoles;{user.roles;{?target}}}\r\n\r\n// Step 1 - Zombies can't bite themselves\r\n{if;{user.id};==;{?target};\r\n    {return;\r\n        {responder.error;{user.mention}, you can't bite yourself.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 2 - Check if target already infected\r\n{if;{includes;{$targetRoles};{$infectedRole}};\r\n    {return;\r\n        {responder.error;You tried to bite {user.mention;{?target}}, but they are already infected!}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 3 - Infect the target\r\n{user.addRole;{$infectedRole};{?target}}\r\n{responder.text;{user.mention}, you have bitten {user.mention;{?target}}, the virus spreads! You can bite again in 6 hours.}\r\n{responder.ephemeral}",
+      "cooldownSeconds": 21600,
       "cooldownType": "User",
-      "restriction": null,
-      "flags": "0"
+      "restriction": {
+        "__typename": "Restriction",
+        "channelMode": "Blacklist",
+        "channelValue": [],
+        "permissions": "0",
+        "roleMode": "Whitelist",
+        "roleValue": [
+          "1392453939038781571"
+        ]
+      },
+      "flags": "256"
     }
   ]
 }

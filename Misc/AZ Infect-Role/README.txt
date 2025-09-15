@@ -7,8 +7,7 @@ Zombies can't bite each other and humans can't bite the zombies.
 ## Usage
 
 0) Actions > Import Action
-1) Replace "url" Discord link with your #lfg, #mulitplayer or #looking-for-players channel link
-2) Replace "url" link with your own server icon image.
-3) In the 'game' string, click on 'Advanced' and adjust your game(s) your server plays.
-4) In the 'players' string, click on 'Advanced' and adjust your player(s) your server or game supports.
-5) Press Save and use your /lfg command in your server.
+1) Replace "infectedRole" with zombie/infect role
+2) Press Save
+3) Give 1 person with the zombie role
+4) Tell them to use the /bite command

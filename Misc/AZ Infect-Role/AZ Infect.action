@@ -1,7 +1,7 @@
 {
   "comment": "Exported from https://atlas.bot",
   "formatVersion": 2,
-  "exportedAt": "2025-09-15T16:11:38.755Z",
+  "exportedAt": "2025-10-04T04:52:51.428Z",
   "actions": [
     {
       "trigger": {
@@ -27,8 +27,8 @@
       },
       "disabled": false,
       "name": "bite",
-      "content": "// Source: https://carl.gg/t/2140166 created by Citnas for Carl tag system.\r\n// Conversion to Trigger/Action for Atlas by azgoodaz & DracoClaw\r\n\r\n// IDs\r\n{=infectedRole;1392453939038781571}\r\n{=targetRoles;{user.roles;{?target}}}\r\n\r\n// Step 1 - Zombies can't bite themselves\r\n{if;{user.id};==;{?target};\r\n    {return;\r\n        {responder.error;{user.mention}, you can't bite yourself.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 2 - Check if target already infected\r\n{if;{includes;{$targetRoles};{$infectedRole}};\r\n    {return;\r\n        {responder.error;You tried to bite {user.mention;{?target}}, but they are already infected!}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 3 - Infect the target\r\n{user.addRole;{$infectedRole};{?target}}\r\n{responder.text;{user.mention}, you have bitten {user.mention;{?target}}, the virus spreads! You can bite again in 6 hours.}\r\n{responder.ephemeral}",
-      "cooldownSeconds": 21600,
+      "content": "// Source: https://carl.gg/t/2140166 created by Citnas for Carl tag system.\r\n// Conversion to Trigger/Action for Atlas by azgoodaz & DracoClaw\r\n\r\n// IDs\r\n{=infectedRole;1392453939038781571}\r\n{=targetRoles;{user.roles;{?target}}}\r\n\r\n// Immunity\r\n{=immuneRoles;{[178212550532399104;274669356137447434]}} // Used for Bot roles only, don't assign to people.\r\n\r\n// Step 1 - Zombies can't bite themselves\r\n{if;{user.id};==;{?target};\r\n    {return;\r\n        {responder.error;{user.mention}, you can't bite yourself.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 1.5 - Zombies can't bite immune people\r\n{if;{find;{$targetRoles};/{join;{$immuneRoles};|}/};\r\n    {return;\r\n        {responder.error;{user.mention}, you can't bite people that don't exist.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 2 - Check if target already infected\r\n{if;{includes;{$targetRoles};{$infectedRole}};\r\n    {return;\r\n        {responder.error;You tried to bite {user.mention;{?target}}, but they are already infected!}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 3 - Infect the target\r\n{user.addRole;{$infectedRole};{?target}}\r\n{responder.text;{user.mention}, you have bitten {user.mention;{?target}}, the virus spreads! You can bite again in 3 hours.}",
+      "cooldownSeconds": 10800,
       "cooldownType": "User",
       "restriction": {
         "__typename": "Restriction",

@@ -1,0 +1,37 @@
+{
+  "comment": "Exported from https://atlas.bot",
+  "formatVersion": 2,
+  "exportedAt": "2026-01-01T19:05:46.406Z",
+  "actions": [
+    {
+      "trigger": {
+        "__typename": "GuildActionTriggerSlashCommand",
+        "description": "Search for Gold",
+        "name": "gold",
+        "parameters": [
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [],
+            "choices": [],
+            "description": "Search for the Pot of Gold",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "search",
+            "required": true,
+            "type": "User"
+          }
+        ],
+        "type": "SlashCommand"
+      },
+      "disabled": false,
+      "name": "gold",
+      "content": "// IDs\r\n{=potGold;1445277725370617988}\r\n{=targetRoles;{user.roles;{?search}}}\r\n{=targetId;{?search}}\r\n\r\n// Step 1 - User has the Gold\r\n{if;{includes;{user.roles};{$potGold}};\r\n    {return;\r\n        {responder.error;{user.mention}, you already have the Pot of Gold.}\r\n    }\r\n}\r\n\r\n// Step 1.5 - User doesn't have Gold\r\n{if;{user.id};==;{?target};\r\n    {if;!{includes;{user.roles};{$potGold}};\r\n        {return;\r\n            {responder.error;{user.mention}, you searched yourself but found out you don't have the Gold.}\r\n        }\r\n    }\r\n}\r\n\r\n// Step 2 - Check if target has the gold then steal gold/role\r\n{if;{includes;{$targetRoles};{$potGold}};\r\n        {user.removeRole;{$potGold};{$targetId}}\r\n        {responder.text;Your Pot of Gold has been stolen.}\r\n        {responder.dm fallback=true;{option;search}}\r\n        {responder.send}\r\n\r\n        {user.addRole;{$potGold};{user.id}}\r\n\r\n        {responder.text;{user.mention}, you found the Gold that {user.mention;{$targetId}} had and you stole it!}\r\n        {responder.ephemeral}\r\n}\r\n\r\n// Step 3 - Check if tagert doesn't have the gold\r\n\r\n        {responder.text;You tried searching {user.mention;{$targetId}}, but they don't have the Gold. You can try again in 3 hours.}",
+      "cooldownSeconds": 0,
+      "cooldownType": "User",
+      "restriction": null,
+      "flags": "256"
+    }
+  ]
+}

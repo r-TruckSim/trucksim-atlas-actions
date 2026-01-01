@@ -1,0 +1,85 @@
+{
+  "comment": "Exported from https://atlas.bot",
+  "formatVersion": 2,
+  "exportedAt": "2026-01-01T19:16:48.150Z",
+  "actions": [
+    {
+      "trigger": {
+        "__typename": "GuildActionTriggerSlashCommand",
+        "description": "Spread the Christmas spirit.",
+        "name": "elf",
+        "parameters": [
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [],
+            "choices": [],
+            "description": "The user you want to spread the spirit.",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "target",
+            "required": true,
+            "type": "User"
+          }
+        ],
+        "type": "SlashCommand"
+      },
+      "disabled": false,
+      "name": "elf",
+      "content": "//// Action created by azgoodaz\r\n\r\n// IDs\r\n{=elf;1445094785085079572}\r\n{=reindeer;1445094835823444118}\r\n{=targetRoles;{user.roles;{?target}}}\r\n\r\n// Immunity\r\n{=immuneRoles;{[327963271921401866;392416230923042816]}} // Used for Bot roles only, don't assign to people.\r\n\r\n// Step 1 - Elfs spread to themselves\r\n{if;{user.id};==;{?target};\r\n    {return;\r\n        {responder.error;{user.mention}, you can't spread the spirit to yourself.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 2 - Check if target already has holiday cheer\r\n{if;{includes;{$targetRoles};{$immuneRoles}};\r\n    {return;\r\n        {responder.error;They were put on the naughty list.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n{if;{includes;{$targetRoles};{$reindeer}};\r\n    {return;\r\n        {responder.error;You can't become both.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n{if;{includes;{$targetRoles};{$elf}};\r\n    {return;\r\n        {responder.error;You tried to spread to {user.mention;{?target}}, they already have the Christmas Spirit.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 3 - Elf\r\n{user.addRole;{$elf};{?target}}\r\n{responder.text;{user.mention}, you have spread the spirit to {user.mention;{?target}}. You can spread again in 2 hours.}",
+      "cooldownSeconds": 7200,
+      "cooldownType": "User",
+      "restriction": {
+        "__typename": "Restriction",
+        "channelMode": "Blacklist",
+        "channelValue": [],
+        "permissions": "0",
+        "roleMode": "Whitelist",
+        "roleValue": [
+          "343719785294462976"
+        ]
+      },
+      "flags": "256"
+    },
+    {
+      "trigger": {
+        "__typename": "GuildActionTriggerSlashCommand",
+        "description": "Spread the Christmas spirit.",
+        "name": "reindeer",
+        "parameters": [
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [],
+            "choices": [],
+            "description": "The user you want to spread the spirit.",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "target",
+            "required": true,
+            "type": "User"
+          }
+        ],
+        "type": "SlashCommand"
+      },
+      "disabled": false,
+      "name": "reindeer",
+      "content": "//// Action created by azgoodaz\r\n\r\n{=elf;1445094785085079572}\r\n{=reindeer;1445094835823444118}\r\n{=targetRoles;{user.roles;{?target}}}\r\n\r\n// Immunity\r\n{=immuneRoles;{[327963271921401866;392416230923042816]}} // Used for Bot roles only, don't assign to people.\r\n\r\n// Step 1 - Reindeer spread to themselves\r\n{if;{user.id};==;{?target};\r\n    {return;\r\n        {responder.error;{user.mention}, you can't spread the spirit to yourself.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 2 - Check if target already has holiday cheer\r\n{if;{includes;{$targetRoles};{$immuneRoles}};\r\n    {return;\r\n        {responder.error;They were put on the naughty list.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n{if;{includes;{$targetRoles};{$elf}};\r\n    {return;\r\n        {responder.error;You can't become both.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n{if;{includes;{$targetRoles};{$reindeer}};\r\n    {return;\r\n        {responder.error;You tried to spread to {user.mention;{?target}}, they already have the Christmas Spirit.}\r\n        {responder.ephemeral}\r\n    }\r\n}\r\n\r\n// Step 3 - Reindeer\r\n{user.addRole;{$reindeer};{?target}}\r\n{responder.text;{user.mention}, you have spread the spirit to {user.mention;{?target}}. You can spread again in 2 hours.}",
+      "cooldownSeconds": 7200,
+      "cooldownType": "User",
+      "restriction": {
+        "__typename": "Restriction",
+        "channelMode": "Blacklist",
+        "channelValue": [],
+        "permissions": "0",
+        "roleMode": "Whitelist",
+        "roleValue": [
+          "343719785294462976"
+        ]
+      },
+      "flags": "256"
+    }
+  ]
+}

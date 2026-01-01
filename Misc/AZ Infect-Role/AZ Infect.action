@@ -1,7 +1,7 @@
 {
   "comment": "Exported from https://atlas.bot",
   "formatVersion": 2,
-  "exportedAt": "2025-10-04T04:52:51.428Z",
+  "exportedAt": "2025-12-02T05:23:01.536Z",
   "actions": [
     {
       "trigger": {
@@ -37,7 +37,7 @@
         "permissions": "0",
         "roleMode": "Whitelist",
         "roleValue": [
-          "1392453939038781571"
+          "343719785294462976"
         ]
       },
       "flags": "256"

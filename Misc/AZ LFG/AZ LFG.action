@@ -1,13 +1,13 @@
 {
   "comment": "Exported from https://atlas.bot",
   "formatVersion": 2,
-  "exportedAt": "2025-09-08T04:57:43.285Z",
+  "exportedAt": "2026-01-01T19:15:05.800Z",
   "actions": [
     {
       "trigger": {
         "__typename": "GuildActionTriggerSlashCommand",
-        "description": "Search/Find members",
-        "name": "lfg",
+        "description": "Search/Find convoy members",
+        "name": "convoy",
         "parameters": [
           {
             "__typename": "GuildActionTriggerParameter",
@@ -76,13 +76,66 @@
             "name": "game",
             "required": true,
             "type": "String"
+          },
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [],
+            "choices": [
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": "ATS: 85568392931479807 (Trucky)",
+                "value": "ATS: 85568392931479807 (Trucky)"
+              },
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": "ETS2: 85568392931479585 (Trucky)",
+                "value": "ETS2: 85568392931479585 (Trucky)"
+              },
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": "Other",
+                "value": "Other"
+              }
+            ],
+            "description": "Select server you're playing on",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "server",
+            "required": true,
+            "type": "String"
+          },
+          {
+            "__typename": "GuildActionTriggerParameter",
+            "channel_types": [],
+            "choices": [
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": "Yes",
+                "value": "Yes"
+              },
+              {
+                "__typename": "GuildActionTriggerParameterChoice",
+                "name": "No",
+                "value": "No"
+              }
+            ],
+            "description": "Will mods be required?",
+            "max_length": null,
+            "max_value": null,
+            "min_length": null,
+            "min_value": null,
+            "name": "mods",
+            "required": false,
+            "type": "String"
           }
         ],
         "type": "SlashCommand"
       },
       "disabled": false,
       "name": "Convoy",
-      "content": "// LFG Action created by azgoodaz\r\n\r\n{responder.embed;{{\r\n  \"title\": \"Looking for Members\",\r\n  \"url\": \"https://discord.com/channels/307404784065839104/1030682242730704907\",\r\n  \"color\": 460551,\r\n\"description\": \"{user.mention} ({user.username}) is looking for a group.\",\r\n  \"thumbnail\": {\r\n    \"url\": \"https://media.discordapp.net/icons/307404784065839104/a_dfef56474a89cd3294b8658c59f06951.png\"\r\n  },\r\n  \"fields\": [\r\n    {\r\n      \"name\": \"Join channel\",\r\n      \"value\": \"<#{option;channel}>\"\r\n    },\r\n    {\r\n      \"name\": \"Game to play\",\r\n      \"value\": \"{option;game}\"\r\n    },\r\n    {\r\n      \"name\": \"Players needed\",\r\n      \"value\": \"{option;players}\"\r\n    }\r\n  ]\r\n}}}",
+      "content": "//// Action created by azgoodaz\r\n//// Allows users to create/search for LFG's\r\n{role.mention;1428044734462427309}\r\n{responder.embed;{{\r\n  \"title\": \"Looking for Members\",\r\n  \"url\": \"https://discord.com/channels/307404784065839104/1030682242730704907\",\r\n  \"color\": 460551,\r\n\"description\": \"{user.mention} ({user.username}) is looking for a convoy. \\n\\nWill this user be playing with mods? {or;{option;mods};N/A talk to {user.mention} for more information.}\",\r\n  \"thumbnail\": {\r\n    \"url\": \"https://media.discordapp.net/icons/307404784065839104/a_dfef56474a89cd3294b8658c59f06951.png\"\r\n  },\r\n  \"fields\": [\r\n    {\r\n      \"name\": \"Voice channel\",\r\n      \"value\": \"<#{option;channel}>\",\r\n      \"inline\": true\r\n    },\r\n    {\r\n      \"name\": \"Game to play\",\r\n      \"value\": \"{option;game}\",\r\n      \"inline\": true\r\n    },\r\n    {\r\n      \"name\": \"Players needed\",\r\n      \"value\": \"{option;players}\",\r\n      \"inline\": true\r\n    },\r\n    {\r\n      \"name\": \"Server ID\",\r\n      \"value\": \"{or;{option;server};No server specified}\",\r\n      \"inline\": true\r\n    }\r\n  ]\r\n}}}",
       "cooldownSeconds": 7200,
       "cooldownType": "User",
       "restriction": {

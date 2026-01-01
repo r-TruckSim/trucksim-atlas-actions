@@ -1,0 +1,35 @@
+{
+  "comment": "Exported from https://atlas.bot",
+  "formatVersion": 2,
+  "exportedAt": "2026-01-01T19:14:18.225Z",
+  "actions": [
+    {
+      "trigger": {
+        "__typename": "GuildActionTriggerGuildBoostRemove",
+        "channelId": "750785497017614456",
+        "type": "GuildBoostRemove"
+      },
+      "disabled": false,
+      "name": "Booster-Leave",
+      "content": "//// Action created by azgoodaz\r\n//// Informs the channel in #boosters (boosters only channel) that user stopped boosting.\r\n\r\n{user.mention} has removed their boost.\r\n\r\n{=logID;343720617545039874}\r\n{=boosterRole;585528913640554527}\r\n\r\n{=color1Role;1381954345893101619}\r\n{=color2Role;1381954463056789525}\r\n\r\n{=roles;{user.roles}}\r\n{if;{$roles};!includes;{$boosterRole}; //// Main Booster role\r\n  {user.removerole;{$color1Role}} //// Color 1\r\n  {user.removerole;{$color2Role}} //// Color 2\r\n}",
+      "cooldownSeconds": 0,
+      "cooldownType": "User",
+      "restriction": null,
+      "flags": "0"
+    },
+    {
+      "trigger": {
+        "__typename": "GuildActionTriggerGuildBoostAdd",
+        "channelId": "750785497017614456",
+        "type": "GuildBoostAdd"
+      },
+      "disabled": false,
+      "name": "Booster-Add",
+      "content": "//// Action created by azgoodaz\r\n//// Thanks Boosters for boosting server in #boosters (boosters only channel)\r\n\r\nThank you {user.mention} for boosting the server! You now have access to this channel. Please see pins for more information.",
+      "cooldownSeconds": 0,
+      "cooldownType": "User",
+      "restriction": null,
+      "flags": "0"
+    }
+  ]
+}
